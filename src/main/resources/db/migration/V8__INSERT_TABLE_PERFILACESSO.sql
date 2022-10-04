@@ -1,0 +1,1 @@
+insert into perfis_acesso(id, 'role') values(1, 'ROLE_USUARIO'),(2, 'ROLE_ADMINISTRADOR');

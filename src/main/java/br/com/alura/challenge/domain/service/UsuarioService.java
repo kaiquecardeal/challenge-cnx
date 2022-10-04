@@ -30,4 +30,14 @@ public class UsuarioService implements UserDetailsService {
         }
         return usuarioDetails;
     }
+
+    public UserDetails findByNome(String nome) throws UsernameNotFoundException{
+        Optional<Usuario> usuario = usuarioRepository.findByNome(nome);
+        UserDetails usuarioNome = usuario.map(usuarioMapper::toDetalharResponse).orElse(null);
+
+        if(Objects.isNull(usuarioNome)){
+            throw new UsernameNotFoundException("Nome " + nome + " não encontrado!");
+        }
+        return usuarioNome;
+    }
 }
