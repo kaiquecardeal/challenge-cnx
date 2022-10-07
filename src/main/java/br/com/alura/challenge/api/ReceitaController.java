@@ -29,7 +29,7 @@ public class ReceitaController implements ReicetaControllerDoc {
     }
 
     @Override
-    @GetMapping("/{id}")
+    @GetMapping("/{idReceita}")
     public ResponseEntity<ReceitaResponse> detalharReceita(@PathVariable Long idReceita) {
         return ResponseEntity.ok(receitaService.detalharReceita(idReceita));
     }
@@ -41,13 +41,13 @@ public class ReceitaController implements ReicetaControllerDoc {
     }
 
     @Override
-    @PutMapping("/{id}")
+    @PutMapping("/{idReceita}")
     public ResponseEntity<ReceitaResponse> atualizarReceita(@PathVariable Long idReceita, @Valid @RequestBody ReceitaRequest receitaRequest) {
         return ResponseEntity.ok(receitaService.atualizarReceita(idReceita, receitaRequest));
     }
 
     @Override
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idReceita}")
     public ResponseEntity<?> deletarReceita(Long idReceita) {
         receitaService.deletarReceita(idReceita);
         return ResponseEntity.noContent().build();

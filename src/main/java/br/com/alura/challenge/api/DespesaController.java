@@ -29,7 +29,7 @@ public class DespesaController implements DespesaControllerDoc {
     }
 
     @Override
-    @GetMapping("/{id}")
+    @GetMapping("/{idDespesa}")
     public ResponseEntity<DespesaResponse> detalharDespesa(@PathVariable Long idDespesa) {
         return ResponseEntity.ok(despesaService.detalharDespesa(idDespesa));
     }
@@ -41,13 +41,13 @@ public class DespesaController implements DespesaControllerDoc {
     }
 
     @Override
-    @PutMapping("/{id}")
+    @PutMapping("/{idDespesa}")
     public ResponseEntity<DespesaResponse> atualizarDespesa(@PathVariable Long idDespesa, @Valid @RequestBody DespesaRequest despesaRequest) {
         return ResponseEntity.ok(despesaService.atualizarDespesa(idDespesa, despesaRequest));
     }
 
     @Override
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idDespesa}")
     public ResponseEntity<?> deletarDespesa(@PathVariable Long idDespesa) {
         despesaService.deletarDespesa(idDespesa);
         return ResponseEntity.noContent().build();
