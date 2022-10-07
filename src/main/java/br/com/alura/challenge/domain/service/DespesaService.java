@@ -1,5 +1,6 @@
 package br.com.alura.challenge.domain.service;
 
+import br.com.alura.challenge.domain.entity.Categoria;
 import br.com.alura.challenge.domain.entity.Despesa;
 import br.com.alura.challenge.domain.repository.DespesaRepository;
 import br.com.alura.challenge.dto.mapper.DespesaMapper;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -36,6 +38,7 @@ public class DespesaService {
     public DespesaResponse inserirDespesa(DespesaRequest despesaRequest) {
         Despesa despesa = despesaMapper.toRequestToEntity(despesaRequest);
         despesa.setData(LocalDate.now());
+        despesa.setCategoria(Objects.nonNull(despesaRequest.getCategoria()) ? despesaRequest.getCategoria() : Categoria.OUTRAS);
         despesaRepository.save(despesa);
         return despesaMapper.toEntityToResponse(despesa);
     }
